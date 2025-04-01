@@ -5,15 +5,37 @@
 
 @if (ShowMessage)
 {
-    <h3>Hello, @name!</h3> 
+    <h3>Hello, @name!</h3>
 }
 
-<ul>
-    @foreach (var customer in customers)
-    {
-        <li>@customer.Id @customer.Name @customer.City</li>
-    }
-</ul>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>City</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var customer in customers)
+        {
+            <tr>
+                <td>@customer.Id</td>
+                <td>@customer.Name</td>
+                <td>@customer.City</td>
+            </tr>
+        }
+
+    </tbody>
+
+    <tfoot>
+        <tr>
+            Count: @customers.Count
+        </tr>
+    </tfoot>
+</table>
 
 
 @code {
@@ -27,7 +49,7 @@
     // public ICustomerRepository repository { get; set; }
 
     protected override void OnInitialized()
-    {      
+    {
         customers = repository.GetAll();
     }
 }
