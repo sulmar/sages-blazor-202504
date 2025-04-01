@@ -1,6 +1,7 @@
 ﻿@page "/customers"
 @using BlazorServerApp.Abstractions
 @using BlazorServerApp.Models
+@inject ICustomerRepository repository
 
 @if (ShowMessage)
 {
@@ -22,8 +23,8 @@
 
     private List<Customer> customers = new List<Customer>();
 
-    [Inject]
-    public ICustomerRepository repository { get; set; }
+    // [Inject]
+    // public ICustomerRepository repository { get; set; }
 
     protected override void OnInitialized()
     {      
