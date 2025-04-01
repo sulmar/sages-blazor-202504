@@ -8,4 +8,3 @@ public interface IProductRepository : IEntityRepository<Product>
 }
 
 
-#endregion
