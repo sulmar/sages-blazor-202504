@@ -9,4 +9,9 @@ public class DbCustomerRepository : ICustomerRepository
     {
         throw new NotImplementedException();
     }
+
+    public Customer Get(int id)
+    {
+        throw new NotImplementedException();
+    }
 }

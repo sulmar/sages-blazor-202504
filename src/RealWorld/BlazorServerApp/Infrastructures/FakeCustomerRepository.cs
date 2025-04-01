@@ -5,22 +5,31 @@ namespace BlazorServerApp.Infrastructures;
 
 public class FakeCustomerRepository : ICustomerRepository
 {
-    private List<Customer> customers = new List<Customer>();
+    private Dictionary<int, Customer> _customers = new Dictionary<int, Customer>();
 
     public FakeCustomerRepository()
     {
-        customers.Add(new Customer { Id = 1, Name = "Customer #1", City = "Warszawa" });
-        customers.Add(new Customer { Id = 2, Name = "Customer #2", City = "Kraków" });
-        customers.Add(new Customer { Id = 3, Name = "Customer #3", City = "Maszkowice" });
-        customers.Add(new Customer { Id = 4, Name = "Customer #4", City = "Poznań" });
-        customers.Add(new Customer { Id = 4, Name = "Customer #5", City = "Częstochowa" });
-        customers.Add(new Customer { Id = 1, Name = "Customer #6", City = "Warszawa" });
-    }
+        var customers = new List<Customer>()
+        {
+            new Customer { Id = 1, Name = "Customer #1", City = "Warszawa" } ,
+            new Customer { Id = 2, Name = "Customer #2", City = "Kraków" } ,
+            new Customer { Id = 3, Name = "Customer #3", City = "Maszkowice" },
+            new Customer { Id = 4, Name = "Customer #4", City = "Poznań" } ,
+            new Customer { Id = 5, Name = "Customer #5", City = "Częstochowa" } ,
+            new Customer { Id = 6, Name = "Customer #6", City = "Warszawa" } 
+        };
 
+        _customers = customers.ToDictionary(p=>p.Id);
+    }
 
     public List<Customer> GetAll()
     {
-        return customers;
+        return _customers.Values.ToList();
     }
-        
+
+    public Customer Get(int id)
+    {
+        return _customers[id];
+    }
+
 }

@@ -1,12 +1,24 @@
-﻿@page "/customers/{id}"
+﻿@page "/customers/{id:int}"
+@using BlazorServerApp.Abstractions
+@using BlazorServerApp.Models
+@inject ICustomerRepository repository
 
 <h3>Customer</h3>
 
 Customer Id: @id
 
+@customer.Id @customer.Name from @customer.City
+
 @code {
 
     [Parameter]
-    public string id { get; set; }
+    public int id { get; set; }
+
+    private Customer customer;
+
+    protected override void OnInitialized()
+    {
+        customer = repository.Get(id);
+    }
 
 }
