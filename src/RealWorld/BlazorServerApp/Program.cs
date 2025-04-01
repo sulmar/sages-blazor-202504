@@ -1,6 +1,9 @@
 using BlazorServerApp.Abstractions;
 using BlazorServerApp.Components;
+using BlazorServerApp.Fakers;
 using BlazorServerApp.Infrastructures;
+using BlazorServerApp.Models;
+using Bogus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +12,16 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddTransient<ICustomerRepository, FakeCustomerRepository>();
+builder.Services.AddSingleton<Faker<Customer>, CustomerFaker>();
+builder.Services.AddSingleton<List<Customer>>(sp =>
+{
+    var faker = sp.GetRequiredService<Faker<Customer>>();
+
+    var customers = faker.Generate(10);
+
+    return customers;
+});
+
 
 var app = builder.Build();
 
