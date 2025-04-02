@@ -19,4 +19,14 @@ public class DbCustomerRepository : ICustomerRepository
     {
         throw new NotImplementedException();
     }
+
+    public void Add(Customer entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Update(Customer entity)
+    {
+        throw new NotImplementedException();
+    }
 }

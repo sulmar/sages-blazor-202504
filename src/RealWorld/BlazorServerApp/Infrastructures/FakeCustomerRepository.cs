@@ -27,4 +27,14 @@ public class FakeCustomerRepository : ICustomerRepository
     {
         return _customers.Values.Where(p=>p.Name.Contains(name)).ToList();
     }
+
+    public void Add(Customer entity)
+    {
+        _customers.Add(entity.Id, entity);
+    }
+
+    public void Update(Customer entity)
+    {
+        _customers[entity.Id] = entity;
+    }
 }

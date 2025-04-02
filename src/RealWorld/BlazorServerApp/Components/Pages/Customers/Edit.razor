@@ -2,6 +2,7 @@
 @using BlazorServerApp.Abstractions
 @using BlazorServerApp.Models
 @inject ICustomerRepository repository
+@inject NavigationManager Navigation
 
 <h3>Edit @customer.Name</h3>
 
@@ -47,8 +48,10 @@
 
     private void Submit()
     {
-        // TODO: Dodaj zapis do repozytorium
-        
+        repository.Update(customer);
+
+        Navigation.NavigateTo("/customers");
+
     }
 
 }

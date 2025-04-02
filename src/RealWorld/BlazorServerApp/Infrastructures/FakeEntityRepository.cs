@@ -23,4 +23,14 @@ public class FakeEntityRepository<T> : IEntityRepository<T>
     {
         return _entities[id];
     }
+
+    public void Add(T entity)
+    {
+        _entities.Add(entity.Id, entity);
+    }
+
+    public void Update(T entity)
+    {
+        _entities[entity.Id] = entity;
+    }
 }
