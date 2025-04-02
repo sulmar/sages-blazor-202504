@@ -1,12 +1,10 @@
 ﻿@page "/customers"
 @using BlazorServerApp.Abstractions
+@using BlazorServerApp.Components.Shared
 @using BlazorServerApp.Models
 @inject ICustomerRepository repository
 
-@if (ShowMessage)
-{
-    <h3>Hello, @name!</h3>
-}
+<Header Name="Customers" Description="Lorem ipsum" />
 
 <table class="table table-striped">
     <thead>
@@ -41,7 +39,6 @@
 
 
 @code {
-    private string name = "John";
 
     private bool ShowMessage = true;
 

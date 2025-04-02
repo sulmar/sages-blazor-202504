@@ -1,7 +1,10 @@
 ﻿@page "/products"
 @using BlazorServerApp.Abstractions
+@using BlazorServerApp.Components.Shared
 @using BlazorServerApp.Models
 @inject IProductRepository repository
+
+<Header Name="Products" Description="Deres" />
 
 <table class="table table-striped">
     <thead>
@@ -35,6 +38,8 @@
 </table>
 
 @code {
+
+    private bool ShowMessage = true;
 
     private List<Product> products = new List<Product>();
 
