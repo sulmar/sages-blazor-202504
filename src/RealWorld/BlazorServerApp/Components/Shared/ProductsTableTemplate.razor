@@ -1,0 +1,39 @@
+﻿@using BlazorServerApp.Models
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>City</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var product in products)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Color</td>
+                <td><a class="btn btn-primary" href="/products/@product.Id">View</a></td>
+            </tr>
+        }
+
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <Counter Count="@products.Count" />
+        </tr>
+    </tfoot>
+</table>
+
+@code {
+
+    [Parameter]
+    public List<Product> products { get; set; }
+
+}
