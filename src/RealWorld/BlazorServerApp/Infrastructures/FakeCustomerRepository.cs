@@ -23,4 +23,8 @@ public class FakeCustomerRepository : ICustomerRepository
         return _customers[id];
     }
 
+    public List<Customer> Get(string name)
+    {
+        return _customers.Values.Where(p=>p.Name.Contains(name)).ToList();
+    }
 }

@@ -11,7 +11,7 @@
 <div>
     <label for="searchText">Type search text: </label>
     <input id="searchText" name="searchText" type="text" @bind="@searchText" />
-    <button type="button" @onclick="Search" class="btn btn-primary">Search</button>
+    <button type="button" @onclick="@Search" class="btn btn-primary">Search</button>
 </div>
 
 <CustomersTableTemplate Customers="@customers" />
@@ -22,7 +22,7 @@
 
     private List<Customer> customers = new List<Customer>();
 
-    private string searchText = "a";
+    private string searchText = string.Empty;
 
     // [Inject]
     // public ICustomerRepository repository { get; set; }
@@ -35,5 +35,7 @@
     private void Search()
     {
         Console.WriteLine($"Searching {searchText}...");
+
+        customers = repository.Get(searchText);
     }
 }

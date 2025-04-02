@@ -14,4 +14,9 @@ public class DbCustomerRepository : ICustomerRepository
     {
         throw new NotImplementedException();
     }
+
+    public List<Customer> Get(string name)
+    {
+        throw new NotImplementedException();
+    }
 }

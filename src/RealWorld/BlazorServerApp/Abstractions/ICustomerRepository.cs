@@ -6,6 +6,7 @@ namespace BlazorServerApp.Abstractions;
 
 public interface ICustomerRepository : IEntityRepository<Customer>
 {
+    List<Customer> Get(string name);
 }
 
 
