@@ -1,40 +1,27 @@
 ﻿@using BlazorServerApp.Models
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>City</th>
-            <th></th>
-        </tr>
-    </thead>
 
-    <tbody>
+<TableTemplate Items="@Customers">
+    <HeaderTemplate>
+        <th>Id</th>
+        <th>Name</th>
+        <th>City</th>
+        <th></th>
+    </HeaderTemplate>
 
-        @foreach (var customer in customers)
-        {
-            <tr>
-                <td>@customer.Id</td>
-                <td>@customer.Name</td>
-                <td>@customer.City</td>
-                <td><a class="btn btn-primary" href="/customers/@customer.Id">View</a></td>
-            </tr>
-        }
+    <RowTemplate Context="customer">
+        <td>@customer.Id</td>
+        <td>@customer.Name</td>
+        <td>@customer.City</td>
+        <td><a class="btn btn-primary" href="/customers/@customer.Id">View</a></td>
+    </RowTemplate>
+</TableTemplate>
 
-    </tbody>
-
-    <tfoot>
-        <tr>
-            <Counter Count="@customers.Count" />
-        </tr>
-    </tfoot>
-</table>
 
 
 @code {
 
-    [Parameter]
-    public List<Customer> customers { get; set; }
+    [Parameter, EditorRequired]
+    public required List<Customer> Customers { get; set; }
 
 }

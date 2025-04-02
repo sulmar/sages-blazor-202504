@@ -6,22 +6,7 @@
 
 <Header Name="Products" Description="Deres" />
 
-<TableTemplate Items="@products">
-    <HeaderTemplate>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Color</th>
-        <th></th>
-    </HeaderTemplate>
-
-    <RowTemplate>
-        <td>@context.Id</td>
-        <td>@context.Name</td>
-        <td>@context.Color</td>
-        <td><a class="btn btn-primary" href="/products/@context.Id">View</a></td>
-    </RowTemplate>
-
-</TableTemplate>
+<ProductsTableTemplate products="@products" />
 
 
 @code {

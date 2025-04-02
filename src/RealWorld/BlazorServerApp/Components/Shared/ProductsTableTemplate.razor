@@ -1,39 +1,25 @@
 ﻿@using BlazorServerApp.Models
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Color</th>
-            <th></th>
-        </tr>
-    </thead>
+<TableTemplate Items="@Products">
+    <HeaderTemplate>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Color</th>
+        <th></th>
+    </HeaderTemplate>
 
-    <tbody>
+    <RowTemplate Context="product">
+        <td>@product.Id</td>
+        <td>@product.Name</td>
+        <td>@product.Color</td>
+        <td><a class="btn btn-primary" href="/products/@product.Id">View</a></td>
+    </RowTemplate>
 
-        @foreach (var product in products)
-        {
-            <tr>
-                <td>@product.Id</td>
-                <td>@product.Name</td>
-                <td>@product.Color</td>
-                <td><a class="btn btn-primary" href="/products/@product.Id">View</a></td>
-            </tr>
-        }
-
-    </tbody>
-
-    <tfoot>
-        <tr>
-            <Counter Count="@products.Count" />
-        </tr>
-    </tfoot>
-</table>
+</TableTemplate>
 
 @code {
 
-    [Parameter]
-    public List<Product> products { get; set; }
+    [Parameter, EditorRequired]
+    public required List<Product> Products { get; set; }
 
 }
