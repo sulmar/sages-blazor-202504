@@ -1,0 +1,20 @@
+﻿@page "/customers/edit/{id:int}"
+@using BlazorServerApp.Abstractions
+@using BlazorServerApp.Models
+@inject ICustomerRepository repository
+
+<h3>Edit @customer.Name</h3>
+
+@code {
+
+    [Parameter]
+    public int id { get; set; }
+
+    private Customer customer;
+
+    protected override void OnInitialized()
+    {
+        customer = repository.Get(id);
+    }
+
+}
