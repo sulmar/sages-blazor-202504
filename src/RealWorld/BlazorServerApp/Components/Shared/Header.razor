@@ -2,7 +2,7 @@
     <h3>Hello, @Name!</h3>
     <p>@Description</p>
 
-    @Content    
+    @ChildContent
 
 </div>
 
@@ -15,5 +15,5 @@
     public required string Description { get; set; }
 
     [Parameter]
-    public RenderFragment? Content { get; set; }
+    public RenderFragment? ChildContent { get; set; }
 }
