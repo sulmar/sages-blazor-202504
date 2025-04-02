@@ -4,7 +4,11 @@
 @using BlazorServerApp.Models
 @inject ICustomerRepository repository
 
-<Header Name="Customers" Description="Lorem ipsum" />
+<Header Name="Customers" Description="Lorem ipsum">
+    <Content>
+        <img src="https://placehold.co/300x200" />
+    </Content>
+</Header>
 
 <CustomersTableTemplate Customers="@customers" />
 
