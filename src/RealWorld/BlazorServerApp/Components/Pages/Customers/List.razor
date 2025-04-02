@@ -10,7 +10,7 @@
 
 <div>
     <label for="searchText">Type search text: </label>
-    <input id="searchText" name="searchText" type="text" @bind="@searchText" />
+    <input id="searchText" name="searchText" type="text" @bind="@searchText" @onkeydown="@Enter" />
     <button type="button" @onclick="@Search" class="btn btn-primary">Search</button>
 </div>
 
@@ -37,5 +37,13 @@
         Console.WriteLine($"Searching {searchText}...");
 
         customers = repository.Get(searchText);
+    }
+
+    private void Enter(KeyboardEventArgs e)
+    {
+        if (e.Code == "Enter" || e.Code == "NumpadEnter")
+        {
+            Search();   
+        }
     }
 }
