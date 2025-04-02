@@ -8,6 +8,14 @@
     <img src="https://placehold.co/300x200" />
 </Header>
 
+<div>
+    <form method="post">
+        <label for="searchText">Type search text: </label>
+        <input id="searchText" name="searchText" type="text" />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+
 <CustomersTableTemplate Customers="@customers" />
 
 @code {
