@@ -5,6 +5,34 @@
 
 <h3>Edit @customer.Name</h3>
 
+<EditForm Model="@customer" OnValidSubmit="@Submit">
+
+    <div class="mb-3">
+        <label for="name" class="form-label">Name:</label>
+        <InputText id="name" @bind-Value="customer.Name" class="form-control"  />
+    </div>
+
+    <div class="mb-3">
+        <label for="city" class="form-label">City:</label>
+        <InputText id="city" @bind-Value="customer.City" class="form-control"  />
+    </div>
+
+    <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
+        <InputTextArea id="description" @bind-Value="customer.Description"  class="form-control" />
+    </div>
+
+    <div class="form-check">
+        <InputCheckbox id="IsActive" @bind-Value="customer.IsActive" class="form-check-input" />
+        <label class="form-check-label" for="IsActive">
+            Is Active
+        </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</EditForm>
+
 @code {
 
     [Parameter]
@@ -15,6 +43,12 @@
     protected override void OnInitialized()
     {
         customer = repository.Get(id);
+    }
+
+    private void Submit()
+    {
+        // TODO: Dodaj zapis do repozytorium
+        
     }
 
 }
