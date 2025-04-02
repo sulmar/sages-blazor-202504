@@ -22,6 +22,18 @@ builder.Services.AddSingleton<List<Customer>>(sp =>
     return customers;
 });
 
+builder.Services.AddTransient<IProductRepository, FakeProductRepository>();
+builder.Services.AddSingleton<Faker<Product>, ProductFaker>();
+builder.Services.AddSingleton<List<Product>>(sp =>
+{
+
+    var faker = sp.GetRequiredService<Faker<Product>>();
+
+    var products = faker.Generate(10);
+
+    return products;
+});
+
 
 var app = builder.Build();
 
