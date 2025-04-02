@@ -6,36 +6,7 @@
 
 <Header Name="Customers" Description="Lorem ipsum" />
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>City</th>
-            <th></th>
-        </tr>
-    </thead>
-
-    <tbody>
-
-        @foreach (var customer in customers)
-        {
-            <tr>
-                <td>@customer.Id</td>
-                <td>@customer.Name</td>
-                <td>@customer.City</td>
-                <td><a class="btn btn-primary" href="/customers/@customer.Id">View</a></td>
-            </tr>
-        }
-
-    </tbody>
-
-    <tfoot>
-        <tr>
-            Count: @customers.Count
-        </tr>
-    </tfoot>
-</table>
+<CustomersTableTemplate customers="@customers" />
 
 
 @code {
