@@ -10,7 +10,7 @@
 
 <div>
     <label for="searchText">Type search text: </label>
-    <input id="searchText" name="searchText" type="text" @bind="@searchText" @onkeydown="@Enter" />
+    <input id="searchText" name="searchText" type="text" @bind="@searchText" @onkeydown="@Enter" @bind:event="oninput" @bind:after="Search" />
     <button type="button" @onclick="@Search" class="btn btn-primary">Search</button>
 </div>
 
