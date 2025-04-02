@@ -1,0 +1,41 @@
+﻿@using BlazorServerApp.Models
+@typeparam T
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            @HeaderTemplate
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Items)
+        {
+            <tr>
+                @RowTemplate(item) 
+            </tr>
+        }
+
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <Counter Count="@Items.Count" />
+        </tr>
+    </tfoot>
+</table>
+
+
+@code {
+
+    [Parameter]
+    public List<T> Items { get; set; }
+
+    [Parameter]
+    public RenderFragment HeaderTemplate { get; set; }
+
+    [Parameter]
+    public RenderFragment<T> RowTemplate { get; set; }
+
+}
