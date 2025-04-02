@@ -9,11 +9,9 @@
 </Header>
 
 <div>
-    <form method="post">
-        <label for="searchText">Type search text: </label>
-        <input id="searchText" name="searchText" type="text" />
-        <button type="submit" class="btn btn-primary">Search</button>
-    </form>
+    <label for="searchText">Type search text: </label>
+    <input id="searchText" name="searchText" type="text" @bind-value="@searchText" />
+    <button type="button" @onclick="Search" class="btn btn-primary">Search</button>
 </div>
 
 <CustomersTableTemplate Customers="@customers" />
@@ -24,11 +22,18 @@
 
     private List<Customer> customers = new List<Customer>();
 
+    private string searchText = "a";
+
     // [Inject]
     // public ICustomerRepository repository { get; set; }
 
     protected override void OnInitialized()
     {
         customers = repository.GetAll();
+    }
+
+    private void Search()
+    {
+        Console.WriteLine($"Searching {searchText}...");
     }
 }
