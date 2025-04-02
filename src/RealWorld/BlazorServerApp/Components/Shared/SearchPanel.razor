@@ -1,0 +1,35 @@
+@using BlazorServerApp.Abstractions
+@using BlazorServerApp.Components.Shared
+@using BlazorServerApp.Models
+
+<div>
+    <label for="searchText">Type search text: </label>
+    <input id="searchText" name="searchText" type="text" @bind="@searchText" @onkeydown="@Enter" @bind:event="oninput" @bind:after="Search" />
+    <button type="button" @onclick="@Search" class="btn btn-primary">Search</button>
+</div>
+
+@code {
+
+    private string searchText = string.Empty;
+
+    [Parameter]
+    public EventCallback<string> OnSearch { get; set; }
+
+
+    private void Enter(KeyboardEventArgs e)
+    {
+        if (e.Code == "Enter" || e.Code == "NumpadEnter")
+        {
+            Search();
+        }
+    }
+
+    private async Task Search()
+    {
+        Console.WriteLine($"Searching {searchText}...");
+
+        await OnSearch.InvokeAsync(searchText);
+    }
+
+}
+

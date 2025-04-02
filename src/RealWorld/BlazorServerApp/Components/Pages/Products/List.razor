@@ -6,6 +6,8 @@
 
 <Header Name="Products" Description="Deres" />
 
+<SearchPanel OnSearch="@OnSearch" />
+
 <ProductsTableTemplate Products="@products" />
 
 
@@ -18,5 +20,10 @@
     protected override void OnInitialized()
     {
         products = repository.GetAll();
+    }
+
+    private void OnSearch(string searchText)
+    {
+        Console.WriteLine($"Searching {searchText}...");
     }
 }

@@ -8,11 +8,7 @@
     <img src="https://placehold.co/300x200" />
 </Header>
 
-<div>
-    <label for="searchText">Type search text: </label>
-    <input id="searchText" name="searchText" type="text" @bind="@searchText" @onkeydown="@Enter" @bind:event="oninput" @bind:after="Search" />
-    <button type="button" @onclick="@Search" class="btn btn-primary">Search</button>
-</div>
+<SearchPanel OnSearch="@Search" />
 
 <CustomersTableTemplate Customers="@customers" />
 
@@ -22,7 +18,7 @@
 
     private List<Customer> customers = new List<Customer>();
 
-    private string searchText = string.Empty;
+
 
     // [Inject]
     // public ICustomerRepository repository { get; set; }
@@ -32,18 +28,13 @@
         customers = repository.GetAll();
     }
 
-    private void Search()
+
+    private void Search(string searchText)
     {
         Console.WriteLine($"Searching {searchText}...");
 
         customers = repository.Get(searchText);
     }
 
-    private void Enter(KeyboardEventArgs e)
-    {
-        if (e.Code == "Enter" || e.Code == "NumpadEnter")
-        {
-            Search();   
-        }
-    }
+    
 }
