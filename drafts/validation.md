@@ -17,5 +17,5 @@ Jeśli użytkownik poda błędne dane, formularz powinien wyświetlać odpowiedn
 
 ## Obsługa formularza:
 
-- Po poprawnym wypełnieniu formularza w konsoli (Console.WriteLine) powinien pojawić się komunikat: "Produkt zapisany poprawnie!".
+- Po poprawnym wypełnieniu formularza w konsoli (`Console.WriteLine`) powinien pojawić się komunikat: *"Produkt zapisany poprawnie!"*.
 - Nie zapisujemy danych do bazy – skupiamy się wyłącznie na walidacji.
