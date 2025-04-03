@@ -13,14 +13,14 @@
     private string searchText = string.Empty;
 
     [Parameter]
-    public EventCallback<string> OnSearch { get; set; }
+    public EventCallback<string> ValueChanged { get; set; }
 
 
-    private void Enter(KeyboardEventArgs e)
+    private async Task Enter(KeyboardEventArgs e)
     {
         if (e.Code == "Enter" || e.Code == "NumpadEnter")
         {
-            Search();
+            await Search();
         }
     }
 
@@ -28,7 +28,7 @@
     {
         Console.WriteLine($"Searching {searchText}...");
 
-        await OnSearch.InvokeAsync(searchText);
+        await ValueChanged.InvokeAsync(searchText);
     }
 
 }
