@@ -13,12 +13,9 @@ Formularz powinien zawierać następujące pola:
 
 ## Walidacja:
 
-Użyj adnotacji [Required], [StringLength], [Range], [RegularExpression] oraz własnej walidacji dla daty ważności.
-
 Jeśli użytkownik poda błędne dane, formularz powinien wyświetlać odpowiednie komunikaty błędów.
 
-Obsługa formularza:
+## Obsługa formularza:
 
-Po poprawnym wypełnieniu formularza w konsoli (Console.WriteLine) powinien pojawić się komunikat: "Produkt zapisany poprawnie!".
-
-Nie zapisujemy danych do bazy – skupiamy się wyłącznie na walidacji.
+- Po poprawnym wypełnieniu formularza w konsoli (Console.WriteLine) powinien pojawić się komunikat: "Produkt zapisany poprawnie!".
+- Nie zapisujemy danych do bazy – skupiamy się wyłącznie na walidacji.
