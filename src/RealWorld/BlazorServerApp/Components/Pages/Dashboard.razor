@@ -1,25 +1,31 @@
 ﻿@page "/dashboard"
 @using Microsoft.AspNetCore.SignalR.Client
+@implements IAsyncDisposable
 
 <h3>Dashboard</h3>
 
 <div>
-    TotalSales: @info.TotalSales
+    TotalSales: @info?.TotalSales
 </div>
 
 <div>
-    NewUsers: @info.NewUsers
+    NewUsers: @info?.NewUsers
 </div>
 
 <div>
-    ActiveSessions: @info.ActiveSessions
+    ActiveSessions: @info?.ActiveSessions
 </div>
 
 @code {
     // dotnet add package Microsoft.AspNetCore.SignalR.Client
     private HubConnection? connection;
 
-    private Info info;
+    private Info? info;
+
+    public async ValueTask DisposeAsync()
+    {
+        await connection.StopAsync();
+    }
 
     protected override async Task OnInitializedAsync()
     {
@@ -27,6 +33,14 @@
             .WithUrl("https://localhost:7153/signalr/dashboard")
             .Build();
 
+        connection.On<Info>("DashboardChanged", message =>
+        {
+            this.info = message;
+
+            InvokeAsync(StateHasChanged);
+
+        });
+        
         await connection.StartAsync();
 
     }
