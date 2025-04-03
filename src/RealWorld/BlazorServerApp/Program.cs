@@ -3,6 +3,7 @@ using BlazorServerApp.Components;
 using BlazorServerApp.Fakers;
 using BlazorServerApp.Infrastructures;
 using BlazorServerApp.Models;
+using BlazorServerApp.Services;
 using Bogus;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,8 +14,13 @@ builder.Services.AddRazorComponents()
 
 // builder.Services.AddScoped<HttpClient>(sp => new HttpClient {  BaseAddress = new Uri("https://jsonplaceholder.typicode.com") });
 
-builder.Services.AddHttpClient("jsonplaceholder", client => client.BaseAddress = new Uri("https://jsonplaceholder.typicode.com"));
+// Named Clients
+// builder.Services.AddHttpClient("jsonplaceholder", client => client.BaseAddress = new Uri("https://jsonplaceholder.typicode.com"));
 builder.Services.AddHttpClient("nbp", client => client.BaseAddress = new Uri("https://api.nbp.pl"));
+
+// Typed Clients
+builder.Services.AddHttpClient<JsonPlaceholderUserService>(client => client.BaseAddress = new Uri("https://jsonplaceholder.typicode.com"));
+
 
 builder.Services.AddTransient<ICustomerRepository, FakeCustomerRepository>();
 builder.Services.AddSingleton<Faker<Customer>, CustomerFaker>();

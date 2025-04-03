@@ -1,5 +1,6 @@
 ﻿@page "/users"
-@inject IHttpClientFactory factory
+@using BlazorServerApp.Services
+@inject JsonPlaceholderUserService Api
 
 <h3>Users</h3>
 
@@ -18,11 +19,9 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        HttpClient Http = factory.CreateClient("jsonplaceholder");
-
         await Task.Delay(2000);
 
-       users = await Http.GetFromJsonAsync<List<User>>("/users");
+        users = await Api.GetAllAsync();
     }
 
 }
