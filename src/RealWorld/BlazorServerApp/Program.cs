@@ -1,6 +1,7 @@
 using BlazorServerApp.Abstractions;
 using BlazorServerApp.Components;
 using BlazorServerApp.Fakers;
+using BlazorServerApp.Hubs;
 using BlazorServerApp.Infrastructures;
 using BlazorServerApp.Models;
 using BlazorServerApp.Services;
@@ -45,6 +46,7 @@ builder.Services.AddSingleton<List<Product>>(sp =>
     return products;
 });
 
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -63,5 +65,7 @@ app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
+
+app.MapHub<DashboardHub>("/signalr/dashboard");
 
 app.Run();

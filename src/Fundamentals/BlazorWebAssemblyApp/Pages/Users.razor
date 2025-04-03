@@ -1,0 +1,35 @@
+﻿@page "/users"
+@using BlazorWebAssemblyApp.Models
+@inject HttpClient Http
+
+<h3>Users</h3>
+
+@if (users == null)
+{
+    <em>Loading users...</em>
+}
+else
+{
+    <ul>
+        @foreach(var user in users)
+        {
+            <li>@user.Name @user.Username @user.Email @user.Website</li>
+
+        }
+    </ul>
+}
+
+@code {
+    private List<User>? users;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(2000);
+
+        users = await Http.GetFromJsonAsync<List<User>>("https://jsonplaceholder.typicode.com/users");
+    }
+
+    
+
+}

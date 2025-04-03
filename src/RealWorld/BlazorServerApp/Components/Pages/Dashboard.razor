@@ -1,0 +1,36 @@
+﻿@page "/dashboard"
+@using Microsoft.AspNetCore.SignalR.Client
+
+<h3>Dashboard</h3>
+
+<div>
+    TotalSales: @info.TotalSales
+</div>
+
+<div>
+    NewUsers: @info.NewUsers
+</div>
+
+<div>
+    ActiveSessions: @info.ActiveSessions
+</div>
+
+@code {
+    // dotnet add package Microsoft.AspNetCore.SignalR.Client
+    private HubConnection? connection;
+
+    private Info info;
+
+    protected override async Task OnInitializedAsync()
+    {
+        connection = new HubConnectionBuilder()
+            .WithUrl("https://localhost:7153/signalr/dashboard")
+            .Build();
+
+        await connection.StartAsync();
+
+    }
+
+
+
+}
