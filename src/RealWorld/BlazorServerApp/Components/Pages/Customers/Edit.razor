@@ -8,19 +8,25 @@
 
 <EditForm Model="@customer" OnValidSubmit="@Submit">
 
+    <DataAnnotationsValidator />
+
+    <ValidationSummary />
+
     <div class="mb-3">
         <label for="name" class="form-label">Name:</label>
-        <InputText id="name" @bind-Value="customer.Name" class="form-control"  />
+        <InputText id="name" @bind-Value="customer.Name" class="form-control" />
+        <ValidationMessage For="()=>customer.Name" />
     </div>
 
     <div class="mb-3">
         <label for="city" class="form-label">City:</label>
-        <InputText id="city" @bind-Value="customer.City" class="form-control"  />
+        <InputText id="city" @bind-Value="customer.City" class="form-control" />
+        <ValidationMessage For="()=>customer.City" />
     </div>
 
     <div class="mb-3">
         <label for="description" class="form-label">Description:</label>
-        <InputTextArea id="description" @bind-Value="customer.Description"  class="form-control" />
+        <InputTextArea id="description" @bind-Value="customer.Description" class="form-control" />
     </div>
 
     <div class="form-check">
@@ -28,6 +34,18 @@
         <label class="form-check-label" for="IsActive">
             Is Active
         </label>
+    </div>
+
+    <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <InputText id="password" @bind-Value="customer.Password" class="form-control" />
+        <ValidationMessage For="()=>customer.Password" />
+    </div>
+
+    <div class="mb-3">
+        <label for="confirm-password" class="form-label">Confirm Password:</label>
+        <InputText id="confirm-password" @bind-Value="customer.ConfirmPassword" class="form-control" />
+        <ValidationMessage For="()=>customer.ConfirmPassword" />
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
