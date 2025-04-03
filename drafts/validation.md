@@ -5,16 +5,11 @@ Twoim zadaniem jest stworzenie formularza do dodawania produktów w aplikacji Bl
 
 ## Wymagania funkcjonalne:
 Formularz powinien zawierać następujące pola:
-
-Nazwa produktu (wymagana, maksymalnie 100 znaków).
-
-Kod produktu (wymagany, musi pasować do formatu ABC-1234).
-
-Cena (wymagana, większa niż 0, maksymalnie 99 999.99).
-
-Opis (wymagany, maksymalnie 500 znaków).
-
-Data ważności (wymagana, musi być w przyszłości).
+- **Nazwa produktu** (wymagana, maksymalnie 100 znaków).
+- **Kod produktu** (wymagany, musi pasować do formatu ABC-1234).
+- **Cena** (wymagana, większa niż 0, maksymalnie 1 999.99).
+- **Opis** (wymagany, maksymalnie 50 znaków).
+- **Data ważności** (wymagana, musi być w przyszłości).
 
 ## Walidacja:
 
