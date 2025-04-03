@@ -12,6 +12,6 @@ public class CustomerValidator : AbstractValidator<Customer>
 		RuleFor(p => p.City).NotEmpty();
 		RuleFor(p => p.Description).Matches("^[A-Z]ello$");
 		RuleFor(p => p.Balance).InclusiveBetween(0, 1000);
-		RuleFor(p => p.ConfirmPassword).Equal(nameof(Customer.Password));
+		// RuleFor(p => p.ConfirmPassword).Equal(nameof(Customer.Password));
 	}
 }

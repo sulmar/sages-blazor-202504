@@ -4,6 +4,7 @@
 @using Blazored.FluentValidation
 @inject ICustomerRepository repository
 @inject NavigationManager Navigation
+@inject IJSRuntime JS
 
 <h3>Edit @customer.Name</h3>
 
@@ -62,13 +63,22 @@
 
     private Customer customer;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         customer = repository.Get(id);
+
+        customer.Name = await JS.InvokeAsync<string>("localStorage.getItem", GetKey());
     }
 
-    private void Submit()
+    private string GetKey() => $"customer:{customer.Id}:name";
+
+
+    private async Task Submit()
     {
+        await JS.InvokeVoidAsync("console.log", "Hello World!");
+
+        await JS.InvokeVoidAsync("localStorage.setItem", GetKey(), customer.Name);
+
         repository.Update(customer);
 
         Navigation.NavigateTo("/customers");
