@@ -1,4 +1,5 @@
 using BlazorServerApp.Abstractions;
+using BlazorServerApp.BackgroundServices;
 using BlazorServerApp.Components;
 using BlazorServerApp.Fakers;
 using BlazorServerApp.Hubs;
@@ -47,6 +48,7 @@ builder.Services.AddSingleton<List<Product>>(sp =>
 });
 
 builder.Services.AddSignalR();
+builder.Services.AddHostedService<DashboardBackgroundService>();
 
 var app = builder.Build();
 
