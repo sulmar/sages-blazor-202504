@@ -1,0 +1,26 @@
+﻿@page "/users"
+@inject HttpClient Http
+
+<h3>Users</h3>
+
+@if (users == null)
+{
+    <em>Loading users...</em>
+}
+else
+{
+    <UsersTableTemplate Users="@users"/>
+}
+
+@code {
+
+    private List<User>? users;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(2000);
+
+       users = await Http.GetFromJsonAsync<List<User>>("/users");
+    }
+
+}

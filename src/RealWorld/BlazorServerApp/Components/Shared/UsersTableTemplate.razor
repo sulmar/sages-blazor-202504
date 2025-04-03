@@ -1,0 +1,25 @@
+﻿@using BlazorServerApp.Models
+
+<TableTemplate Items="@Users">
+    <HeaderTemplate>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Website</th>
+    </HeaderTemplate>
+
+    <RowTemplate Context="user">
+        <td>@user.Id</td>
+        <td>@user.Name</td>
+        <td>@user.Username</td>
+        <td>@user.Website</td>
+    </RowTemplate>
+
+</TableTemplate>
+
+@code {
+
+    [Parameter, EditorRequired]
+    public required List<User> Users { get; set; }
+
+}

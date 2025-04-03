@@ -11,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+builder.Services.AddScoped<HttpClient>(sp => new HttpClient {  BaseAddress = new Uri("https://jsonplaceholder.typicode.com") });
+
 builder.Services.AddTransient<ICustomerRepository, FakeCustomerRepository>();
 builder.Services.AddSingleton<Faker<Customer>, CustomerFaker>();
 builder.Services.AddSingleton<List<Customer>>(sp =>
