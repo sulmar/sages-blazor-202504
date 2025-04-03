@@ -1,7 +1,7 @@
 # Zadanie: Walidacja Produktu w Blazorze
 
 ## Cel:
-Twoim zadaniem jest stworzenie formularza do dodawania produktów w aplikacji Blazor, który wykorzystuje walidację opartą na DataAnnotations. Formularz powinien umożliwiać wprowadzenie danych produktu oraz ich poprawną walidację przed zapisaniem.
+Twoim zadaniem jest stworzenie formularza do dodawania produktów w aplikacji **Blazor**, który wykorzystuje walidację opartą na **DataAnnotations** lub **Fluent Validations**. Formularz powinien umożliwiać wprowadzenie danych produktu oraz ich poprawną walidację przed zapisaniem.
 
 ## Wymagania funkcjonalne:
 Formularz powinien zawierać następujące pola:
