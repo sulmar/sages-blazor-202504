@@ -11,7 +11,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-builder.Services.AddScoped<HttpClient>(sp => new HttpClient {  BaseAddress = new Uri("https://jsonplaceholder.typicode.com") });
+// builder.Services.AddScoped<HttpClient>(sp => new HttpClient {  BaseAddress = new Uri("https://jsonplaceholder.typicode.com") });
+
+builder.Services.AddHttpClient("jsonplaceholder", client => client.BaseAddress = new Uri("https://jsonplaceholder.typicode.com"));
+builder.Services.AddHttpClient("nbp", client => client.BaseAddress = new Uri("https://api.nbp.pl"));
 
 builder.Services.AddTransient<ICustomerRepository, FakeCustomerRepository>();
 builder.Services.AddSingleton<Faker<Customer>, CustomerFaker>();
