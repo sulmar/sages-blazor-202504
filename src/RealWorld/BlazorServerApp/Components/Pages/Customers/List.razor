@@ -1,5 +1,4 @@
 ﻿@page "/customers"
-@inject ICustomerRepository repository
 
 <h3>Customers</h3>
 
@@ -11,29 +10,3 @@
 
 <CustomersTableTemplate Customers="@customers" />
 
-@code {
-
-    private bool ShowMessage = true;
-
-    private List<Customer> customers = new List<Customer>();
-
-
-
-    // [Inject]
-    // public ICustomerRepository repository { get; set; }
-
-    protected override void OnInitialized()
-    {
-        customers = repository.GetAll();
-    }
-
-
-    private void Search(string searchText)
-    {
-        Console.WriteLine($"Searching {searchText}...");
-
-        customers = repository.Get(searchText);
-    }
-
-    
-}
