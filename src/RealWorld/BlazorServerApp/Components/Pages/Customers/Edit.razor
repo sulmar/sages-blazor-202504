@@ -1,6 +1,7 @@
 ﻿@page "/customers/edit/{id:int}"
 @using BlazorServerApp.Abstractions
 @using BlazorServerApp.Models
+@using Blazored.FluentValidation
 @inject ICustomerRepository repository
 @inject NavigationManager Navigation
 
@@ -8,7 +9,9 @@
 
 <EditForm Model="@customer" OnValidSubmit="@Submit">
 
-    <DataAnnotationsValidator />
+    @* <DataAnnotationsValidator /> *@
+
+    <FluentValidationValidator />
 
     <ValidationSummary />
 
